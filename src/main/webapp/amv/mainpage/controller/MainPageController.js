@@ -1,6 +1,9 @@
 //noinspection JSAnnotator
 angular.module('MainPage')
-    .controller('MainPageCtrl', function ($scope, $location) {
+    .controller('MainPageCtrl', function ($scope, $location, $controller) {
         var main = this;
-        console.log('Hi');
+        main = angular.extend(main, $controller('BasePageCtrl', {$scope: $scope, page:{
+            pageTitle:"Home"
+        }}));
+        console.log('Hi Main');
     });

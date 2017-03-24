@@ -1,2 +1,2 @@
 //noinspection JSAnnotator
-angular.module('MainPage', []);
+angular.module('MainPage', ['Common']);

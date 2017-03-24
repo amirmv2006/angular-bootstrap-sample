@@ -15,6 +15,8 @@ head.load(
     { file: 'vendor/flot/jquery.flot.js' },
     { file: 'vendor/flot/jquery.flot.categories.js' },
     { file: 'vendor/sugar-1.4.1.min.js' },
+    { file: 'amv/common/Common.js' },
+    { file: 'amv/common/basepage/controller/BasePageController.js' },
     { file: 'amv/mainpage/MainPage.js' },
     { file: 'amv/mainpage/controller/MainPageController.js' },
     { file: 'amv/MyApp.js' }
