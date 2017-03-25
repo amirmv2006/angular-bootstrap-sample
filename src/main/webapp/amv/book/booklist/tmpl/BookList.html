@@ -1,0 +1,26 @@
+<!-- DataTables CSS -->
+<link href="vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+<link href="vendor/angular-datatables/css/angular-datatables.css" rel="stylesheet">
+<!-- DataTables Responsive CSS -->
+<link href="vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+<div class="row col-lg-12" ng-controller="BookListPageCtrl as bookListPageCtrl">
+    <div class="row">
+        <h1 class="page-header">{{bookListPageCtrl.pageTitle}}</h1>
+        <table datatable="" dt-options="bookListPageCtrl.dtOptions" dt-columns="bookListPageCtrl.dtColumns"
+               class="display" cellspacing="0" width="100%">
+        </table>
+    </div>
+    <!-- /.col-lg-12 -->
+    <div class="page-footer">
+        <div class="panel-body">
+            <button ng-repeat="action in bookListPageCtrl.actions" ng-click="action.action()" class="btn btn-primary">
+                <i ng-class="action.icon"></i> {{action.label}}
+            </button>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
+<!-- DataTables JavaScript -->
+<script src="vendor/datatables-responsive/dataTables.responsive.js"></script>

@@ -1,0 +1,31 @@
+<div class="row col-lg-12" ng-controller="BookEditPageCtrl as bookEditPageCtrl">
+    <div class="row">
+        <h1 class="page-header">{{bookEditPageCtrl.pageTitle}}</h1>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form role="form">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input class="form-control" ng-model="bookEditPageCtrl.book.name" title="Name"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Publish Year</label>
+                            <input type="number" class="form-control bfh-number"
+                                   ng-model="bookEditPageCtrl.book.publishYear" title="Publish Year"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.col-lg-12 -->
+    <div class="page-footer">
+        <div class="panel-body">
+            <button ng-repeat="action in bookEditPageCtrl.actions" ng-click="action.action()" class="btn btn-primary">
+                <i ng-class="action.icon"></i> {{action.label}}
+            </button>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
