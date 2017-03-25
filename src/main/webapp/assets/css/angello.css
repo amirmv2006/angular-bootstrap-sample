@@ -371,3 +371,10 @@ form.ng-dirty input.ng-valid {
     height: 50%;
     left: 0;
 }
+
+/*ADDED BY AMV*/
+.page-footer{
+    position: absolute;
+    padding-top: 20px;
+    bottom: 0;
+}
