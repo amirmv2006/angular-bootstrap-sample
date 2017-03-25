@@ -4,16 +4,16 @@ var myModule = angular.module('AMV',
         'ngAnimate',
         'ngMessages',
         'Common',
-        'MainPage',
+        'HomePage',
         'Book'
     ]);
 myModule.config(function($routeProvider, $httpProvider, $provide) {
 
     $routeProvider
         .when('/', {
-            templateUrl: 'amv/mainpage/controller/tmpl/MainPage.html',
-            controller: 'MainPageCtrl',
-            controllerAs: 'mainPageCtrl',
+            templateUrl: 'amv/homepage/controller/tmpl/HomePage.html',
+            controller: 'HomePageCtrl',
+            controllerAs: 'homePageCtrl',
             requiresLogin: true
         })
         .when('/book/list', {
