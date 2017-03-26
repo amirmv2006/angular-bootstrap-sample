@@ -11,26 +11,13 @@ myModule.config(function($routeProvider, $httpProvider, $provide) {
 
     $routeProvider
         .when('/', {
-            templateUrl: 'amv/homepage/tmpl/HomePage.html',
-            controller: 'HomePageCtrl',
-            controllerAs: 'homePageCtrl',
-            requiresLogin: true
+            templateUrl: 'amv/homepage/tmpl/HomePage.html'
         })
         .when('/book/list', {
-            templateUrl: 'amv/book/booklist/tmpl/BookList.html',
-            controller: 'BookListPageCtrl',
-            controllerAs: 'bookListPageCtrl',
-            requiresLogin: true
+            templateUrl: 'amv/book/booklist/tmpl/BookList.html'
         })
         .when('/book/add', {
-            templateUrl: 'amv/book/bookedit/tmpl/BookEdit.html',
-            controller: 'BookEditPageCtrl',
-            controllerAs: 'bookEditPageCtrl',
-            requiresLogin: true
+            templateUrl: 'amv/book/bookedit/tmpl/BookEdit.html'
         })
         .otherwise({redirectTo: '/'});
 });
-
-myModule.config(['$compileProvider', function ($compileProvider) {
-    $compileProvider.debugInfoEnabled(false);
-}]);

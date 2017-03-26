@@ -306,11 +306,15 @@
     </nav>
 
     <div id="page-wrapper">
-        <div class="row col-lg-12" >
-            <div ng-view=""></div>
+        <div class="row col-lg-12">
+            <div class="row">
+                <h1 class="page-header">{{navigationCtrl.getCurrentPage().title}}</h1>
+                <div ng-view=""></div>
+            </div>
             <div class="page-footer">
                 <div class="panel-body">
-                    <button ng-repeat="action in navigationCtrl.getCurrentPage().actions" ng-click="action.action()" class="btn btn-primary">
+                    <button ng-repeat="action in navigationCtrl.getCurrentPage().actions" ng-click="action.action()"
+                            class="btn btn-primary">
                         <i ng-class="action.icon"></i> {{action.label}}
                     </button>
                 </div>
