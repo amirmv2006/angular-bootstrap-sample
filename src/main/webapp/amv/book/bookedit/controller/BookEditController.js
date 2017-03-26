@@ -1,6 +1,6 @@
 //noinspection JSAnnotator
 angular.module('Book')
-    .controller('BookEditPageCtrl', function ($scope, $location, $controller, MainPageService, Page, PageAction, $http, $q) {
+    .controller('BookEditPageCtrl', function ($scope, $location, $controller, $log, MainPageService, Page, PageAction, $http, $q) {
         var main = this;
         main = angular.extend(main, $controller('BasePageCtrl', {
             $scope: $scope,
@@ -15,11 +15,22 @@ angular.module('Book')
         }));
 
         main.book = {
-            name: null,
-            publishYear: 0
+        };
+
+        main.resetForm = function () {
+            main.book.name = null;
+            main.book.publishYear = 0;
         };
 
         main.save = function () {
-            $http.post('cxf/rest/Book', main.book);
+            console.log(main.book);
+            $http.post('cxf/rest/Book', angular.copy(main.book)).then(function (result) {
+                main.resetForm();
+                $log.debug('RESULT', result);
+                $location.path(bookAddPage.parentPage.url);
+            }, function (reason) {
+                $log.debug('ERROR', reason);
+            });
         };
+        main.resetForm();
     });
