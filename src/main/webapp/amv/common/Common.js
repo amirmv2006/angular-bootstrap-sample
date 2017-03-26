@@ -1,5 +1,4 @@
 //noinspection JSAnnotator
-console.log("initializing Common Module");
 var common = angular.module('Common', ['ui.bootstrap']);
 common.factory('PageAction', function () {
     function PageAction(label, icon, action) {
@@ -16,6 +15,20 @@ common.factory('Page', function () {
        this.title = title;
        this.parentPage = parentPage;
        this.isCollapsed = true;
+       this.actions = [];
+       this.hasBack = true;
    }
+   Page.prototype.addAction = function (pageAction) {
+       var page = this;
+       var duplicate = false;
+       for (var pageIndex = 0; pageIndex < page.actions.length; pageIndex++) {
+           if (page.actions[pageIndex].label == pageAction.label) {
+               duplicate = true;
+           }
+       }
+       if (!duplicate) {
+           page.actions.unshift(pageAction);
+       }
+   };
    return (Page);
 });

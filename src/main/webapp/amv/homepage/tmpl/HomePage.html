@@ -1,17 +1,4 @@
-<div class="row col-md-1" ng-controller="HomePageCtrl as homePageCtrl">
-    <div>
-        <h1 class="page-header">{{homePageCtrl.pageTitle}}</h1>
-        <a href="#/book/list">Book List</a>
-    </div>
-    <!-- /.col-lg-12 -->
-    <div class="page-footer">
-        <div class="btn-toolbar" role="toolbar">
-            <div class="btn-group">
-                <button ng-repeat="action in homePageCtrl.actions" class="btn btn-primary">
-                    <i ng-class="action.icon"></i> {{action.label}}
-                </button>
-            </div>
-        </div>
-    </div>
+<div ng-controller="HomePageCtrl as homePageCtrl">
+    <h1 class="page-header">{{homePageCtrl.pageTitle}}</h1>
+    <h2>Welcome dude!</h2>
 </div>
-<!-- /.row -->

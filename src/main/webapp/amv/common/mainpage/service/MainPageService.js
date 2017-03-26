@@ -39,4 +39,14 @@ common.service('MainPageService', function (Page) {
         }
         return childPages;
     };
+
+
+    // current page
+    mainPageSvc.currentPage = null;
+    mainPageSvc.setCurrentPage = function (page) {
+        mainPageSvc.currentPage = page;
+    };
+    mainPageSvc.getCurrentPage = function () {
+        return mainPageSvc.currentPage;
+    }
 });
