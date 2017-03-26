@@ -11,7 +11,7 @@ myModule.config(function($routeProvider, $httpProvider, $provide) {
 
     $routeProvider
         .when('/', {
-            templateUrl: 'amv/homepage/controller/tmpl/HomePage.html',
+            templateUrl: 'amv/homepage/tmpl/HomePage.html',
             controller: 'HomePageCtrl',
             controllerAs: 'homePageCtrl',
             requiresLogin: true
@@ -29,5 +29,8 @@ myModule.config(function($routeProvider, $httpProvider, $provide) {
             requiresLogin: true
         })
         .otherwise({redirectTo: '/'});
-
 });
+
+myModule.config(['$compileProvider', function ($compileProvider) {
+    $compileProvider.debugInfoEnabled(false);
+}]);

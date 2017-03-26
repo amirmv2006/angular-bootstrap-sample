@@ -22,5 +22,5 @@ angular.module('Book')
             DTColumnBuilder.newColumn('name').withTitle('Name'),
             DTColumnBuilder.newColumn('publishYear').withTitle('Publish Year')
         ];
-        console.log('Hi Main');
+        console.log('Hi BookListCtrl');
     });

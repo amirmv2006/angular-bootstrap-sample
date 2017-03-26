@@ -19,4 +19,5 @@ angular.module('Book')
         main.save = function () {
             $http.post('cxf/rest/Book', main.book);
         }
+        console.log('Hi BookEditCtrl');
     });
