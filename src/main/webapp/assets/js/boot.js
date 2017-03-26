@@ -2,7 +2,6 @@ head.load(
     { file: '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js' },
     { file: '//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/js/jquery.dataTables.min.js' },
     { file: '//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/js/dataTables.bootstrap.js' },
-    { file: '' },
     { file: '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular.min.js' },
     { file: '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular-messages.min.js' },
     { file: '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular-route.min.js' },
