@@ -42,7 +42,10 @@ public class SampleAppConfig {
         bookDto.setPublishYear(2020);
         List<BookDto> bookDtos = bookService.searchByExample(bookDto);
         if (bookDtos.isEmpty()) {
-            bookService.save(bookDto);
+            for (int i = 0; i < 20; i++) {
+                bookDto.setName("Amir " + i);
+                bookService.save(bookDto);
+            }
         }
     }
 
