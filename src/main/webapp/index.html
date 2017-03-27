@@ -283,12 +283,12 @@
                     <li ng-repeat="page in navigationCtrl.rootPages" ng-class="page.collapsedActiveClass">
                         <!-- no children -->
                         <a ng-href="#{{page.url}}" ng-if="page.childPages.length == 0"><i
-                                class="fa fa-dashboard fa-fw"></i> {{page.title}}
+                                class="{{page.iconClass}} fa-fw"></i> {{page.title}}
                         </a>
                         <!-- has children -->
                         <a href="javascript:;" ng-click="navigationCtrl.toggleCollapse(page)"
                            ng-if="page.childPages.length > 0">
-                            <i class="fa fa-dashboard fa-fw"></i> {{page.title}}
+                            <i class="{{page.iconClass}} fa-fw"></i> {{page.title}}
                             <span class="fa arrow"></span>
                         </a>
                         <ul ng-if="page.childPages.length > 0" class="nav nav-second-level collapse"

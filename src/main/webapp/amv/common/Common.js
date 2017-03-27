@@ -17,6 +17,11 @@ common.factory('Page', function () {
        this.isCollapsed = true;
        this.actions = [];
        this.hasBack = true;
+       this.menuPath = pageName;
+       if (parentPage) {
+           this.menuPath = this.menuPath + "." + parentPage.menuPath;
+       }
+       this.iconClass = "fa fa-question";
    }
    Page.prototype.addAction = function (pageAction) {
        var page = this;

@@ -12,7 +12,7 @@ angular.module('Common')
             var currentPage = MainPageService.getCurrentPage();
             if (currentPage && currentPage.hasBack && currentPage.parentPage) {
                 currentPage.addAction(new PageAction("Back", "fa fa-arrow-left", function () {
-                    $location.path(currentPage.parentPage.url);
+                    MainPageService.goBack();
                 }));
             }
             return currentPage;

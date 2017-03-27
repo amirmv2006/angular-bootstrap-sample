@@ -1,5 +1,5 @@
 var common = angular.module('Common');
-common.service('MainPageService', function (Page) {
+common.service('MainPageService', function ($location, Page) {
     var mainPageSvc = this;
     mainPageSvc.allPages = [];
 
@@ -24,7 +24,7 @@ common.service('MainPageService', function (Page) {
     mainPageSvc.getRootPages = function () {
         var rootPages = [];
         for (var i = 0; i < mainPageSvc.allPages.length; i++) {
-            if (mainPageSvc.allPages[i].parentPage == null) {
+            if (!mainPageSvc.allPages[i].menuPath.includes('.')) {
                 rootPages.push(mainPageSvc.allPages[i]);
             }
         }
@@ -32,14 +32,20 @@ common.service('MainPageService', function (Page) {
     };
     mainPageSvc.getChildPages = function (parentPageName) {
         var childPages = [];
-        for (var i = 0; i < mainPageSvc.allPages.length; i++) {
-            if (mainPageSvc.allPages[i].parentPage && mainPageSvc.allPages[i].parentPage.pageName == parentPageName) {
-                childPages.push(mainPageSvc.allPages[i]);
+        mainPageSvc.allPages.forEach(function (page) {
+            if (page.menuPath.includes('.')) {
+                var lastIndexOfDot = page.menuPath.lastIndexOf(".");
+                if (page.menuPath.substring(0, lastIndexOfDot) == parentPageName) {
+                    childPages.push(page);
+                }
             }
-        }
+        });
         return childPages;
     };
 
+    mainPageSvc.goBack = function () {
+        $location.path(mainPageSvc.currentPage.parentPage.url);
+    };
 
     // current page
     mainPageSvc.currentPage = null;

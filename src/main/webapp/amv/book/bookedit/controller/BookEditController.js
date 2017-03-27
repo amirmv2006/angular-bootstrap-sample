@@ -27,7 +27,7 @@ angular.module('Book')
             $http.post('cxf/rest/Book', angular.copy(main.book)).then(function (result) {
                 main.resetForm();
                 $log.debug('RESULT', result);
-                $location.path(bookAddPage.parentPage.url);
+                MainPageService.goBack();
             }, function (reason) {
                 $log.debug('ERROR', reason);
             });
