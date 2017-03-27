@@ -28,5 +28,6 @@ head.load(
     { file: 'amv/book/Book.js' },
     { file: 'amv/book/booklist/controller/BookListController.js' },
     { file: 'amv/book/bookedit/controller/BookEditController.js' },
+    { file: 'amv/book/bookedit/component/BookEditComponent.js' },
     { file: 'amv/MyApp.js' }
 );

@@ -18,6 +18,16 @@ angular.module('Common')
             return currentPage;
         };
 
+        navigationCtrl.doPageAction = function (pageAction) {
+            var currentPage = MainPageService.getCurrentPage();
+            currentPage.actions.forEach(function (act) {
+                if (act.label == pageAction.label) {
+                    act.action();
+                    return;
+                }
+            })
+        };
+
         navigationCtrl.toggleCollapse = function (page) {
             page.isCollapsed = !page.isCollapsed;
             page.collapsedActiveClass = page.isCollapsed ? '' : 'active';

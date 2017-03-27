@@ -313,7 +313,7 @@
             </div>
             <div class="page-footer">
                 <div class="panel-body">
-                    <button ng-repeat="action in navigationCtrl.getCurrentPage().actions" ng-click="action.action()"
+                    <button ng-repeat="action in navigationCtrl.getCurrentPage().actions" ng-click="navigationCtrl.doPageAction(action)"
                             class="btn btn-primary">
                         <i ng-class="action.icon"></i> {{action.label}}
                     </button>

@@ -25,14 +25,18 @@ common.factory('Page', function () {
    }
    Page.prototype.addAction = function (pageAction) {
        var page = this;
-       var duplicate = false;
+       var existIndex = -1;
        for (var pageIndex = 0; pageIndex < page.actions.length; pageIndex++) {
            if (page.actions[pageIndex].label == pageAction.label) {
-               duplicate = true;
+               existIndex = pageIndex;
+               break;
            }
        }
-       if (!duplicate) {
+       if (existIndex == -1) {
            page.actions.unshift(pageAction);
+       } else {
+           page.actions[existIndex].icon = pageAction.icon;
+           page.actions[existIndex].action = pageAction.action;
        }
    };
    return (Page);

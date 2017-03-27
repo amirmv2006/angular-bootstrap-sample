@@ -13,7 +13,11 @@ angular.module('Book')
             console.log("Saving");
             main.save();
         }));
+        bookAddPage.addAction(new PageAction("Test", "fa fa-question", function () {
+            console.log(main.book);
+        }));
 
+        console.log("initializing Book model");
         main.book = {
         };
 
