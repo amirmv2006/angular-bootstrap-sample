@@ -12,6 +12,9 @@ angular.module('Book')
         bookListPage.addAction(new PageAction("Add", "fa fa-plus", function () {
             $location.path('/book/add');
         }));
+        bookListPage.addAction(new PageAction("Search", "fa fa-search", function () {
+            main.dtInstance._renderer.rerender();
+        }));
         main.dtOptions = DTOptionsBuilder
         /*.newOptions().withOption('ajax', {
          url: 'cxf/rest/Book/datatable',
@@ -24,21 +27,35 @@ angular.module('Book')
          }).withDataProp('data')*/
 
             .newOptions().withFnServerData(function (sSource, aoData, fnCallback, oSettings) {
-                    $http.post('cxf/rest/Book/datatable',
+                    var pagingDto = {
+                        pageNumber: aoData[3].value / aoData[4].value,
+                        pageSize: aoData[4].value,
+                    };
+                    var orderList = [];
+                    for (var orderIndex = 0; orderIndex < aoData[2].value.length; orderIndex++) {
+                        var orderColumnIndex = aoData[2].value[orderIndex].column;
+                        var orderPropertyName = aoData[1].value[orderColumnIndex].data;
+                        var sortDto = {
+                            propertyName: orderPropertyName,
+                            ascending: aoData[2].value[orderIndex].dir.toLowerCase() == "asc"
+                        };
+                        orderList.unshift(sortDto);
+                    }
+                    pagingDto.sortList = orderList;
+
+                    $http.post('cxf/rest/Book/searchByExamplePaged',
                         {
-                            columns: aoData[1].value,
-                            order: aoData[2].value,
-                            start: aoData[3].value,
-                            length: aoData[4].value,
-                            search: aoData[5].value
+                            pagingDto: pagingDto,
+                            example:main.searchObject
                         }).then(function (result) {
                         const records = {
                             draw: aoData[0],
-                            recordsTotal: result.headers('x-meta-total'),
-                            recordsFiltered: result.headers('x-meta-total'),
-                            data: result.data
+                            recordsTotal: result.data.totalCount,
+                            recordsFiltered: result.data.afterFilterCount,
+                            // recordsFiltered: result.headers('x-meta-total'),
+                            data: result.data.records
                         };
-                        fnCallback(records)
+                        fnCallback(records);
                     })
 
                 }
@@ -51,10 +68,21 @@ angular.module('Book')
             //     });
             //     return defer.promise;
             // })
-            .withPaginationType('full_numbers').withOption('serverSide', true);
+            .withPaginationType('full_numbers')
+            .withOption('bFilter', false)
+            .withOption('serverSide', true);
+
+        main.dtInstance = {};
+
         main.dtColumns = [
             DTColumnBuilder.newColumn('name').withTitle('Name').withOption('defaultContent', '-'),
             DTColumnBuilder.newColumn('publishYear').withTitle('Publish Year')
         ];
+
+        main.hideSearch = true;
+        main.searchObject = {
+            name: null,
+            publishYear: null
+        };
 
     });

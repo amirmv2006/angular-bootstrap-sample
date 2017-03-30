@@ -9,7 +9,7 @@ import javax.persistence.Table;
  * Created by amv on 3/14/17.
  */
 @Entity
-@Table(name = "ANG_CITY")
+@Table(name = "ang_city")
 public class BookEntity extends BaseEntityImpl<Long> {
 
     private String name;

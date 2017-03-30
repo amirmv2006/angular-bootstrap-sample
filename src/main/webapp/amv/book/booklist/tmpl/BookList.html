@@ -5,8 +5,17 @@
 <link href="vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
 <div class="row" ng-controller="BookListPageCtrl as bookListPageCtrl">
-    <bookedit></bookedit>
-    <table datatable="" dt-options="bookListPageCtrl.dtOptions" dt-columns="bookListPageCtrl.dtColumns"
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <button type="button" class="btn btn-default"
+                    ng-click="bookListPageCtrl.hideSearch = !bookListPageCtrl.hideSearch">Show Search
+            </button>
+        </div>
+        <div class="panel-body" uib-collapse="bookListPageCtrl.hideSearch">
+            <bookedit book="bookListPageCtrl.searchObject"></bookedit>
+        </div>
+    </div>
+    <table datatable="" dt-options="bookListPageCtrl.dtOptions" dt-instance="bookListPageCtrl.dtInstance" dt-columns="bookListPageCtrl.dtColumns"
            class="display" cellspacing="0" width="100%">
     </table>
 </div>
