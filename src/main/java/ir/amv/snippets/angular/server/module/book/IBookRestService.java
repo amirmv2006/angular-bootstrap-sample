@@ -6,11 +6,9 @@ import ir.amv.os.vaseline.ws.rest.server.base.crud.IBaseCrudRestService;
 import ir.amv.os.vaseline.ws.rest.server.multiparam.annot.JsonMultParam;
 import ir.amv.os.vaseline.ws.rest.server.multiparam.annot.JsonParam;
 import ir.amv.snippets.angular.shared.module.book.BookDto;
-import ir.amv.snippets.angular.shared.module.book.DataTableDto;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Map;
 
@@ -97,9 +95,4 @@ public interface IBookRestService extends IBaseCrudRestService<BookDto, Long> {
             throws BaseVaselineClientException;
 
 
-    // datatables
-    @Produces({MediaType.APPLICATION_JSON})
-    @POST
-    @Path("/datatable")
-    Response getPageForDataTable(DataTableDto dataTableDto) throws BaseVaselineClientException;
 }
