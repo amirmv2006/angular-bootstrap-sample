@@ -129,4 +129,16 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>OSS Sonatype</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
