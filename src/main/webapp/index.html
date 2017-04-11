@@ -20,9 +20,6 @@
     <!-- Custom CSS -->
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="vendor/morrisjs/morris.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -37,7 +34,7 @@
 
 <body ng-controller="NavigationCtrl as navigationCtrl">
 
-<div id="wrapper">
+<div id="wrapper" ng-controller="NotificationCtrl as notificationCtrl">
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -311,9 +308,24 @@
                 <h1 class="page-header">{{navigationCtrl.getCurrentPage().title}}</h1>
                 <div ng-view=""></div>
             </div>
+            <div class="row col-lg-4 pull-right notification-container">
+                <div class="">
+                    <div uib-alert ng-repeat="notification in notificationCtrl.getAllNotifications()"
+                         ng-class="'alert-' + (notification.notifType || 'success')" class="col-lg-12"
+                         close="notificationCtrl.closeNotification($index)" ng-if="!notification.autoHide">
+                        {{notification.message}}
+                    </div>
+                    <div uib-alert ng-repeat="notification in notificationCtrl.getAllNotifications()"
+                         ng-class="'alert-' + (notification.notifType || 'success')" class="col-lg-12"
+                         close="notificationCtrl.closeNotification($index)" dismiss-on-timeout="2000"
+                         ng-if="notification.autoHide">{{notification.message}}
+                    </div>
+                </div>
+            </div>
             <div class="page-footer">
                 <div class="panel-body">
-                    <button ng-repeat="action in navigationCtrl.getCurrentPage().actions" ng-click="navigationCtrl.doPageAction(action)"
+                    <button ng-repeat="action in navigationCtrl.getCurrentPage().actions"
+                            ng-click="navigationCtrl.doPageAction(action)"
                             class="btn btn-primary">
                         <i ng-class="action.icon"></i> {{action.label}}
                     </button>
@@ -337,8 +349,6 @@
 
 <!-- Morris Charts JavaScript -->
 <script src="vendor/raphael/raphael.min.js"></script>
-<script src="vendor/morrisjs/morris.min.js"></script>
-<script src="data/morris-data.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="dist/js/sb-admin-2.js"></script>

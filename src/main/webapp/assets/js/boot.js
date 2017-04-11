@@ -22,6 +22,8 @@ head.load(
     { file: 'amv/common/Common.js' },
     { file: 'amv/common/mainpage/service/MainPageService.js' },
     { file: 'amv/common/basepage/controller/BasePageController.js' },
+    { file: 'amv/common/notifications/service/NotificationService.js' },
+    { file: 'amv/common/notifications/controller/NotificationController.js' },
     { file: 'amv/common/navigation/controller/NavigationController.js' },
     { file: 'amv/homepage/Home.js' },
     { file: 'amv/homepage/controller/HomePageController.js' },

@@ -101,7 +101,7 @@ body.loading .modal {
 }
 
 .new-user .error {
-  position: absolute;
+    position: absolute;
 }
 
 .details {
@@ -268,7 +268,7 @@ form.ng-dirty input.ng-valid {
 }
 
 .error {
-  color: red;
+    color: red;
 }
 
 .form-signin input[type=text],
@@ -304,6 +304,7 @@ form.ng-dirty input.ng-valid {
     position: absolute;
     display: none;
 }
+
 [drop-target].drop-target-active {
     display: block;
     pointer-events: none;
@@ -373,8 +374,18 @@ form.ng-dirty input.ng-valid {
 }
 
 /*ADDED BY AMV*/
-.page-footer{
+.page-footer {
     position: absolute;
     padding-top: 20px;
     bottom: 0;
+}
+
+.notification-container {
+    bottom: 0;
+    right: 0;
+    margin-bottom: 0;
+    border-width: 1px 0 0;
+    position: fixed;
+    z-index: 1030;
+    padding-right: 30px;
 }

@@ -3,7 +3,8 @@ angular.module('Book')
         templateUrl:"amv/book/bookedit/tmpl/BookEditComponent.html",
         controllerAs:'bookEditComponentCtrl',
         bindings: {
-            book:'='
+            book:'=',
+            bookForm:'@'
         }
         ,controller: function () {
         }

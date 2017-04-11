@@ -2,14 +2,15 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-lg-6">
-                <form role="form">
+                <form name="bookEditComponentCtrl.bookForm" role="form">
                     <div class="form-group">
                         <label>Name</label>
-                        <input class="form-control" ng-model="bookEditComponentCtrl.book.name" title="Name"/>
+                        <input class="form-control" name="bookName" ng-model="bookEditComponentCtrl.book.name"
+                               title="Name" ng-required="true"/>
                     </div>
                     <div class="form-group">
                         <label>Publish Year</label>
-                        <input type="number" class="form-control bfh-number"
+                        <input type="number" class="form-control bfh-number" name="publishYear"
                                ng-model="bookEditComponentCtrl.book.publishYear" title="Publish Year"/>
                     </div>
                 </form>

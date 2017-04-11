@@ -59,7 +59,7 @@ public class SampleAppConfig {
 //        List<BookDto> bookDtos = bookService.searchByExample(bookDto);
 //        if (bookDtos.isEmpty()) {
         ArrayList<BookEntity> books = new ArrayList<>();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
             BookEntity bookEntity = new BookEntity();
             bookEntity.setName("Amir " + i);
             bookEntity.setPublishYear(i);
