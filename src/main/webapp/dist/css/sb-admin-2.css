@@ -11,8 +11,10 @@ body {
 }
 #page-wrapper {
   padding: 0 15px;
+  height: auto;
   min-height: 568px;
   background-color: white;
+  overflow: hidden;
 }
 @media (min-width: 768px) {
   #page-wrapper {
