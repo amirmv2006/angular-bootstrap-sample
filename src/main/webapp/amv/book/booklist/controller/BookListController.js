@@ -66,7 +66,8 @@ angular.module('Book')
                 // })
                 .withPaginationType('full_numbers')
                 .withOption('bFilter', false)
-                .withOption('serverSide', true);
+                .withOption('serverSide', true)
+                .withOption('pagingType', 'simple_numbers');
 
             main.dtInstance = {};
 

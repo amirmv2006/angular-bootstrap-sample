@@ -66,12 +66,7 @@ table.dataTable tbody th, table.dataTable tbody td {
     background: #D6D6D6;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-    padding: 0.3em 0.8em;
-}
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
     /*transition: all 0.4s ease;*/
-    padding: 0.3em 0.8em;
     background: #D6D6D6;
-    border: 1px solid transparent;
 }
