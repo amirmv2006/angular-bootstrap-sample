@@ -1,6 +1,6 @@
 //noinspection JSAnnotator
 angular.module('Book')
-    .controller('BookListPageCtrl', function ($compile, $scope, $location, $controller, $document, $uibModal, MainPageService, Page, PageAction, DTOptionsBuilder, DTColumnBuilder, $http, $q) {
+    .controller('BookListPageCtrl', function ($compile, $scope, $location, $controller, $document, $uibModal, MainPageService, Page, PageAction, DTOptionsBuilder, DTColumnBuilder, $http, BookService, $q) {
             var main = this;
             main = angular.extend(main, $controller('BasePageCtrl', {
                 $scope: $scope,
@@ -43,17 +43,13 @@ angular.module('Book')
                         }
                         pagingDto.sortList = orderList;
 
-                        $http.post('cxf/rest/Book/searchByExamplePaged',
-                            {
-                                pagingDto: pagingDto,
-                                example: main.searchObject
-                            }).then(function (result) {
+                        BookService.searchByExamplePaged(main.searchObject, pagingDto, function (result) {
                             const records = {
                                 draw: aoData[0],
-                                recordsTotal: result.data.totalCount,
-                                recordsFiltered: result.data.afterFilterCount,
+                                recordsTotal: result.totalCount,
+                                recordsFiltered: result.afterFilterCount,
                                 // recordsFiltered: result.headers('x-meta-total'),
-                                data: result.data.records
+                                data: result.records
                             };
                             fnCallback(records);
                         })
@@ -101,7 +97,7 @@ angular.module('Book')
                         id: function () {
                             return id;
                         },
-                        refresh:function () {
+                        refresh: function () {
 
                         }
                     }
@@ -132,10 +128,10 @@ angular.module('Book')
         }
     );
 angular.module('Book')
-    .controller('DeleteModelCtrl', function ($uibModalInstance, $http, id, refresh) {
+    .controller('DeleteModelCtrl', function ($uibModalInstance, $http, id, BookService) {
         var deleteModelCtrl = this;
         deleteModelCtrl.ok = function () {
-            $http.delete('cxf/rest/Book/' + id).then(function (result) {
+            BookService.deleteById(id, function (result) {
                 $uibModalInstance.close(true);
             });
         };

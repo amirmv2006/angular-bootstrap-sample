@@ -8,6 +8,7 @@ common.factory('PageAction', function () {
     }
     return (PageAction);
 });
+common.constant('REST_BASE_PATH', 'cxf/rest');
 common.factory('Page', function () {
    function Page(pageName, url, title, parentPage) {
        this.pageName = pageName;

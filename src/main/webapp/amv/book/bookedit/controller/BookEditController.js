@@ -1,6 +1,6 @@
 //noinspection JSAnnotator
 angular.module('Book')
-    .controller('BookEditPageCtrl', function ($scope, $location, $controller, $log, MainPageService, NotificationService, Page, PageAction, $http, $q) {
+    .controller('BookEditPageCtrl', function ($scope, $location, $controller, $log, MainPageService, NotificationService, Page, PageAction, $http, $q, BookService, REST_BASE_PATH) {
         var main = this;
         main = angular.extend(main, $controller('BasePageCtrl', {
             $scope: $scope,
@@ -20,8 +20,8 @@ angular.module('Book')
 
         var id = $location.search().id;
         if (id) {
-            $http.get('cxf/rest/Book/' + id).then(function (result) {
-                angular.copy(result.data, main.book);
+            BookService.getById(id, function (result) {
+                angular.copy(result, main.book);
             });
         }
 
@@ -35,22 +35,16 @@ angular.module('Book')
             console.log(main.book);
             // if (main.bookForm.$valid) {
                 if (main.book.id) {
-                    $http.put('cxf/rest/Book', angular.copy(main.book)).then(function (result) {
+                    BookService.update(angular.copy(main.book), function (result) {
                         main.resetForm();
                         $log.debug('RESULT', result);
                         MainPageService.goBack();
-                    }, function (reason) {
-                        NotificationService.addErrorNotification(reason.data.detailMessage);
-                        $log.debug('ERROR', reason);
                     });
                 } else {
-                    $http.post('cxf/rest/Book', angular.copy(main.book)).then(function (result) {
+                    BookService.save(angular.copy(main.book), function (result) {
                         main.resetForm();
                         $log.debug('RESULT', result);
                         MainPageService.goBack();
-                    }, function (reason) {
-                        NotificationService.addErrorNotification(reason.data.detailMessage);
-                        $log.debug('ERROR', reason);
                     });
                 }
             // } else {
