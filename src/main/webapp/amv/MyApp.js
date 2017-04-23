@@ -3,7 +3,7 @@ var myModule = angular.module('AMV',
         'ngRoute',
         'ngAnimate',
         'ngMessages',
-        'Common',
+        'CRUD',
         'HomePage',
         'Book'
     ]);

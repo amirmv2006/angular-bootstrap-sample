@@ -1,11 +1,5 @@
-//noinspection JSAnnotator
 angular.module('HomePage')
-    .controller('HomePageCtrl', function ($scope, $location, $controller, MainPageService) {
+    .controller('HomePageCtrl', function ($scope, $location, $controller, BasePageController) {
         var homePageCtrl = this;
-        homePageCtrl = angular.extend(homePageCtrl, $controller('BasePageCtrl', {
-            $scope: $scope,
-            $controller:$controller,
-            MainPageService:MainPageService,
-            pageName:"Home"
-        }));
+        homePageCtrl = angular.extend(homePageCtrl, new BasePageController("Home"));
     });

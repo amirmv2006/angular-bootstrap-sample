@@ -1,5 +1,4 @@
-//noinspection JSAnnotator
-angular.module('HomePage', ['Common']).run(function (MainPageService) {
-    var homePage = MainPageService.addMainPage("Home", "/", "Home");
+angular.module('HomePage', ['CRUD']).run(function (NavigationService) {
+    var homePage = NavigationService.addMainPage("Home", "/", "Home");
     homePage.hasBack = false;
 });

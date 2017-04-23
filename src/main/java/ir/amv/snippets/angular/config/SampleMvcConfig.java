@@ -1,8 +1,10 @@
 package ir.amv.snippets.angular.config;
 /*PROTECTED REGION ID(ir.amv.mammut.blah.config.BlahMvcConfig) ENABLED START*/
 
+import ir.amv.os.vaseline.angular.crud.config.VaselineAngularCrudMvcConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -16,13 +18,14 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
  */
 @EnableWebMvc
 @Configuration
+@Import(VaselineAngularCrudMvcConfig.class)
 public class SampleMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Override
-	public void configureDefaultServletHandling(
-			DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
+    public void configureDefaultServletHandling(
+            DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
 
 	//	@Autowired
 	//	@Qualifier("getValidatorFactory")

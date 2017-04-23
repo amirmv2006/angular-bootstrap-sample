@@ -45,6 +45,11 @@
     </build>
     <dependencies>
         <dependency>
+            <groupId>com.github.amirmv2006.angular</groupId>
+            <artifactId>vaseline-angular-crud</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.amirmv2006.base</groupId>
             <artifactId>vaseline-architecture-impl</artifactId>
             <version>${com.github.amirmv2006.version}</version>
