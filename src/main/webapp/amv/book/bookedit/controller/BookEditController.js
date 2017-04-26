@@ -3,8 +3,11 @@ angular.module('Book')
                                               BasePageController, PageAction, NotificationService, NavigationService, BookService
                                               ) {
         var main = this;
-        main = angular.extend(main, new BasePageController("BookAdd"));
-        var bookAddPage = NavigationService.findPage("BookAdd");
+        main = angular.extend(main, new BasePageController($scope, $location, $controller, "BookAdd"));
+        var bookAddPage = main.page;
+        bookAddPage.pageParameters = {
+            id:null
+        };
         bookAddPage.addAction(new PageAction("Save", "fa fa-save", function () {
             console.log("Saving");
             main.save();

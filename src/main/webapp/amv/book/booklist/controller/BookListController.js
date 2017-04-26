@@ -1,9 +1,11 @@
 angular.module('Book')
     .controller('BookListController', function ($compile, $scope, $location, $controller, $document, $uibModal,
-                                                BasePageController, NavigationService, PageAction, DTOptionsBuilder, DTColumnBuilder, $http, BookService, $q) {
+                                                BasePageController, NavigationService, PageAction,
+                                                DTOptionsBuilder, DTColumnBuilder, $http,
+                                                BookService, BookModel, $q) {
             var main = this;
-            main = angular.extend(main, new BasePageController("BookList"));
-            var bookListPage = NavigationService.findPage("BookList");
+            main = angular.extend(main, new BasePageController($scope, $location, $controller, "BookList"));
+            var bookListPage = main.page;
             bookListPage.addAction(new PageAction("Add", "fa fa-plus", function () {
                 $location.path('/book/add');
             }));
@@ -98,11 +100,7 @@ angular.module('Book')
             };
 
             main.hideSearch = true;
-            main.searchObject = {
-                name: null,
-                publishYear: null
-            };
-
+            main.searchObject = new BookModel();
         }
     );
 angular.module('Book')
