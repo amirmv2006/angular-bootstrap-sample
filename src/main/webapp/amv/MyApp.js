@@ -19,5 +19,8 @@ myModule.config(function($routeProvider, $httpProvider, $provide) {
         .when('/book/add', {
             templateUrl: 'amv/book/bookedit/tmpl/BookEdit.html'
         })
+        .when('/book/edit', {
+            templateUrl: 'amv/book/bookedit/tmpl/BookEdit.html'
+        })
         .otherwise({redirectTo: '/'});
 });
