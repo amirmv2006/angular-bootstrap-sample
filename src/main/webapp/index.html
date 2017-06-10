@@ -279,7 +279,7 @@
                     </li>
                     <li ng-repeat="page in navigationCtrl.rootPages" ng-class="page.collapsedActiveClass">
                         <!-- no children -->
-                        <a ng-href="#{{page.url}}" ng-if="page.childPages.length == 0"><i
+                        <a ui-sref="{{page.pageState}}" ng-if="page.childPages.length == 0"><i
                                 class="{{page.iconClass}} fa-fw"></i> {{page.title}}
                         </a>
                         <!-- has children -->
@@ -291,7 +291,7 @@
                         <ul ng-if="page.childPages.length > 0" class="nav nav-second-level collapse"
                             uib-collapse="page.isCollapsed">
                             <li ng-repeat="subPage in page.childPages">
-                                <a ng-href="#{{subPage.url}}">{{subPage.title}}</a>
+                                <a ui-sref="{{subPage.pageState}}">{{subPage.title}}</a>
                             </li>
                         </ul>
                     </li>
@@ -306,7 +306,7 @@
         <div class="row col-lg-12">
             <div class="row">
                 <h1 class="page-header">{{navigationCtrl.getCurrentPage().title}}</h1>
-                <div ng-view=""></div>
+                <ui-view></ui-view>
             </div>
             <div class="row col-lg-4 pull-right notification-container">
                 <div class="">
