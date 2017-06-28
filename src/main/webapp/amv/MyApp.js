@@ -22,11 +22,6 @@ myModule.config(function($httpProvider, $provide, $stateProvider, $urlRouterProv
         url : '/book/list',
         templateUrl: 'amv/book/booklist/tmpl/BookList.html'
     };
-    var bookAddState = {
-        name : 'bookAdd',
-        url : '/book/add',
-        templateUrl: 'amv/book/bookedit/tmpl/BookEdit.html'
-    };
     var bookEditState = {
         name : 'bookEdit',
         url : '/book/edit',
@@ -34,6 +29,5 @@ myModule.config(function($httpProvider, $provide, $stateProvider, $urlRouterProv
     };
     $stateProvider.state(homeState);
     $stateProvider.state(bookListState);
-    $stateProvider.state(bookAddState);
     $stateProvider.state(bookEditState);
 });

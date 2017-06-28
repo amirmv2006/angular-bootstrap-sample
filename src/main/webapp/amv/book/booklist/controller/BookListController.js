@@ -1,12 +1,12 @@
 angular.module('Book')
-    .controller('BookListController', function ($compile, $scope, $location, $controller, $document, $uibModal,
+    .controller('BookListController', function ($compile, $scope, $rootScope, $location, $state, $controller, $document, $uibModal,
                                                 BaseListController, NavigationService, PageAction,
                                                 DTOptionsBuilder, DTColumnBuilder, $http,
                                                 BookService, BookModel, $q) {
             var main = this;
-            main = angular.extend(main, new BaseListController($scope, $location, $controller,
+            main = angular.extend(main, new BaseListController($scope, $rootScope, $location, $state, $controller,
                 DTOptionsBuilder, DTColumnBuilder,
-                "BookList", "/book", "bookListPageCtrl",
+                "bookList", "bookListPageCtrl",
                 BookService, BookModel));
         }
     );

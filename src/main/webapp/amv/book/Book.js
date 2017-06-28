@@ -1,7 +1,8 @@
 angular.module('Book', ['CRUD','datatables','ngMessages']).run(function (NavigationService) {
-    var bookPage = NavigationService.addMainPage("Book", "home", "Book");
+    var bookPage = NavigationService.addMainPage("book", "Book");
     bookPage.iconClass = "fa fa-book";
-    var bookListPage = NavigationService.addChildPage("BookList", "bookList", "Book List", NavigationService.findPage("Home"));
-    bookListPage.menuPath = "Book.BookList";
-    NavigationService.addChildPage("BookAdd", "bookAdd", "Add Book", bookListPage);
+    var bookListPage = NavigationService.addChildPage("bookList", "Book List", NavigationService.findPage("book"));
+    bookListPage.menuPath = "book.bookList";
+    var addBookPage = NavigationService.addChildPage("bookEdit", "Edit Book", bookListPage);
+    addBookPage.menuPath = "";
 });
