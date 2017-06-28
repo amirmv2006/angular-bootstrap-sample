@@ -24,7 +24,8 @@ myModule.config(function($httpProvider, $provide, $stateProvider, $urlRouterProv
     };
     var bookEditState = {
         name : 'bookEdit',
-        url : '/book/edit',
+        url : '/book/edit?entityId',
+        params : {'entityId': null},
         templateUrl: 'amv/book/bookedit/tmpl/BookEdit.html'
     };
     $stateProvider.state(homeState);
